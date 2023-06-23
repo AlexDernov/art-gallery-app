@@ -8,6 +8,7 @@ display: grid;
 place-items: center;
 `;
 export default function ArtPieces({ pieces }) {
+    console.log("Pieces", pieces);
   return (
     <List>
       {pieces?.map((piece) => (
