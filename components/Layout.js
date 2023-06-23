@@ -6,7 +6,7 @@ import Navigation from "./Navigation";
 const StyledLayout = styled.div`
   margin: 60px 0 0 0;
   padding:top 20px;
-  background-image: url(./images/Art_gallery.png);
+  background-image: url(/images/Art_gallery.png);
   background-color: var(--primary-color-back);
   background-repeat: no-repeat;
   background-size: 100% auto;

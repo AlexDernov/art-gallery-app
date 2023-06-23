@@ -31,9 +31,9 @@ return (<nav>
     <NavLink href="/">Spotlight</NavLink>
   </li>
   <li>
-    <NavLink href="/art-pieces/slug">Art Pieces</NavLink>
+    <NavLink href="/art-pieces">Art Pieces</NavLink>
   </li>
-  <li class="navigation__link">
+  <li >
     <NavLink href="/Favorites">Favorites</NavLink>
   </li>
 </NavList>
