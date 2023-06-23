@@ -13,7 +13,8 @@ export default function List({ comments, onDeleteComments }) {
       <Box>
         {comments.map((comment) => (
           <li key={comment.id}>
-            {comment.comment}
+            <p>{comment.date}</p>
+            <p>{comment.comment}</p>
          {/*    <button
               type="button"
               aria-label="delete comment"

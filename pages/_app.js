@@ -1,27 +1,10 @@
 import GlobalStyle from "../styles";
 import Layout from "../components/Layout.js";
 import useSWR from "swr";
-/* import { useState, useEffect } from "react"; */
+import { useImmerLocalStorageState } from "../lib/hook/useImmerLocalStorageState";
 
 export default function App({ Component, pageProps }) {
   const URL = "https://example-apis.vercel.app/api/art";
-  /*  const [artPieces, setArtPieces] = useState([]); */
-  /* useEffect(() => {
-    async function getArtPieces() {
-      try {
-        const response = await fetch(URL);
-        const data = await response.json();
-        console.log("Data", data);
-        setArtPieces(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getArtPieces();
-  }, []);
-  if (!artPieces.length){
-    return null
-  } */
 
   const fetcher = async (url) => {
     const response = await fetch(url);
@@ -43,11 +26,28 @@ export default function App({ Component, pageProps }) {
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
 
+  const [artPiecesInfo, updateArtPiecesInfo] = useImmerLocalStorageState(
+    "art-pieces-info",
+    { defaultValue: data }
+  );
+  
+  function handleToggleLiked(slug) {
+    updateArtPiecesInfo((draft) => {
+      const piece = draft.find((piece) => piece.slug === slug);
+      piece.isLiked = !piece.isLiked;
+    });
+  }
+
   return (
     <>
       <GlobalStyle />
       <Layout>
-        <Component {...pageProps} pieces={data} />
+        <Component
+          {...pageProps}
+          pieces={artPiecesInfo}
+          onToggleLiked={handleToggleLiked}
+          isLiked={isLiked}
+        />
       </Layout>
     </>
   );
