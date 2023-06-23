@@ -7,11 +7,11 @@ export default function ArtPiecesDetailsPage({ pieces }) {
 
   const artPiece = pieces.find((piece) => piece.slug === slug);
   console.log(artPiece);
-  const { image, title, artist, year, genre, slug: index } = artPiece;
+  const { imageSource, name, artist, year, genre, slug: index } = artPiece;
   return (
     <ArtPieceDetails
-      image={image}
-      title={title}
+      image={imageSource}
+      title={name}
       artist={artist}
       year={year}
       genre={genre}

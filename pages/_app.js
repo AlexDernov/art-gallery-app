@@ -6,7 +6,7 @@ import useSWR from "swr";
 export default function App({ Component, pageProps }) {
   const URL = "https://example-apis.vercel.app/api/art";
   /*  const [artPieces, setArtPieces] = useState([]); */
- /* useEffect(() => {
+  /* useEffect(() => {
     async function getArtPieces() {
       try {
         const response = await fetch(URL);
@@ -32,22 +32,22 @@ export default function App({ Component, pageProps }) {
       throw error;
     }
     return response.json();
-  }; 
+  };
 
-  const {data, isLoading, error} =useSWR(URL, fetcher);
-  
-  console.log("Data3", data)
-  if (!data){
-    return null
+  const { data, isLoading, error } = useSWR(URL, fetcher);
+
+  console.log("Data3", data);
+  if (!data) {
+    return null;
   }
   if (error) return <div>failed to load</div>;
-      if (isLoading) return <div>loading...</div>; 
-     
+  if (isLoading) return <div>loading...</div>;
+
   return (
-    <><GlobalStyle />
+    <>
+      <GlobalStyle />
       <Layout>
-        
-        <Component {...pageProps} pieces={data}/>
+        <Component {...pageProps} pieces={data} />
       </Layout>
     </>
   );

@@ -1,9 +1,9 @@
-export function Form({ onAddComment }) {
+export default function Form({ onAddComment }) {
   function handeleSubmit(event) {
     event.preventDefault();
     /*  const formData = new FormData(event.terget);
       const data = Object.fromEntries(formData); */
-    const data = event.target.elements.comment.value;
+    const data = {comment: event.target.elements.comment.value};
 
     onAddComment(data);
     event.target.reset();

@@ -2,9 +2,29 @@ import Image from "next/image";
 import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
-import List from "./List";
 import Link from "next/link";
 import Form from "./Form";
+import List from "./List";
+
+const Back = styled(Link)`
+margin: 0;
+font-family: var(--font-imperial); 
+padding: 0;
+color: var(--primary-color);
+height: 60px;
+width: 100%;
+list-style-type: none;
+display: flex;
+align-content: flex-start;
+justify-content: flex-start;
+font-size: 3em;`;
+
+
+const Main = styled.main`
+list-style-type: none;
+text-align: center;
+display: grid;
+place-items: center;`;
 
 const Info = styled.ul`
   list-style-type: none;
@@ -25,7 +45,7 @@ export default function ArtPieceDetails({
     defaultValue: [],
   });
 
-  function handleAddComment(newComment) {
+   function handleAddComment(newComment) {
     setComments([...comments, { id: uid(), ...newComment }]);
   }
 
@@ -33,12 +53,12 @@ export default function ArtPieceDetails({
     setComments(
       comments.filter((comment) => (comment.id === id ? false : true))
     );
-  }
+  } 
   console.log("Slug", slug);
   return (
-    <div>
-   <Link href="/art-pieces">
-     <svg
+    <Main>
+      <Back href="/art-pieces">
+        <svg
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -54,10 +74,10 @@ export default function ArtPieceDetails({
           />
         </svg>
         <div>All Art Pieces</div>
-      </Link>
+      </Back>
       <section>
         <h1>{title}</h1>
-        <Image src={image} width={407} height={620} aria-labelledby={slug} />
+        <Image src={image} width={407} height={620} alt="Bild" /* aria-labelledby={slug} */ />
       </section>
       <Info>
         <li>
@@ -68,8 +88,9 @@ export default function ArtPieceDetails({
           <i>{genre}</i>
         </li>
       </Info>
+
       <List comments={comments} onDeleteComment={handleDeleteComment} />
       <Form onAddComment={handleAddComment} />
-    </div>
+    </Main>
   );
 }

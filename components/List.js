@@ -6,7 +6,7 @@ const Box = styled.ul`
   display: grid;
   place-items: center;
 `;
-export function List({ comments, onDeleteComments }) {
+export default function List({ comments, onDeleteComments }) {
   return (
     <>
       <h1>Comments:</h1>
@@ -14,13 +14,13 @@ export function List({ comments, onDeleteComments }) {
         {comments.map((comment) => (
           <li key={comment.id}>
             {comment.comment}
-            <button
+         {/*    <button
               type="button"
               aria-label="delete comment"
               onClick={() => onDeleteComments(comment.id)}
             >
-              ✕{" "}
-            </button>
+              ✕
+            </button> */}
           </li>
         ))}
       </Box>
