@@ -22,7 +22,10 @@ bottom: 0;`;
 
 const NavLink = styled(Link)`
 text-decoration: none;
-color: var(--primary-color);`;
+color: var(--primary-color);
+&: hover {
+  transform: scale(1.3);
+}`;
 
 export default function Navigation(){
 return (<nav>

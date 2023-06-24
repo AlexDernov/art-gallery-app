@@ -5,6 +5,7 @@ import { uid } from "uid";
 import Link from "next/link";
 import Form from "./Form";
 import List from "./List";
+import FavoriteButton from "./FavoriteButton";
 
 const Back = styled(Link)`
 margin: 0;
@@ -46,7 +47,7 @@ export default function ArtPieceDetails({
   });
 
    function handleAddComment(newComment) {
-    setComments([...comments, { id: uid(), ...newComment }]);
+    setComments([...comments, { date: new Date().toLocaleDateString("en-us", { dateStyle: "medium" }), id: uid(), ...newComment }]);
   }
 
   function handleDeleteComment(id) {
@@ -77,6 +78,7 @@ export default function ArtPieceDetails({
       </Back>
       <section>
         <h1>{title}</h1>
+        <FavoriteButton/>
         <Image src={image} width={407} height={620} alt="Bild" /* aria-labelledby={slug} */ />
       </section>
       <Info>
