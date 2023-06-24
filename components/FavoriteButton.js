@@ -13,12 +13,12 @@ const Button = styled.button`
 /* position: absolute;
   right: 1rem;
   top: 1.5rem; */
-export default function FavoriteButton({ isLiked, onToggleFavorite }) {
+export default function FavoriteButton({ isLiked, onToggleLiked }) {
   return (
     
-      <Button isLiked={isLiked} onClick={onToggleFavorite}>
+      <Button isLiked={isLiked} onClick={onToggleLiked}>
         <Image
-          src="/images/heart.svg"
+          src={isLiked? "/images/heart.svg": "/images/heartLiked.svg"}
           width={50}
           height={50}
           alt="" /* color=`${isLiked ? red: black}` */

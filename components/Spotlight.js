@@ -20,12 +20,12 @@ const ImgBox = styled.div`
   
 `;
 
-export default function Spotlight({ image, artist }) {
+export default function Spotlight({ image, artist, onToggleLiked, isLiked }) {
   return (
     <ImgBox>
     <Div>
-      <StyledImage src={image} width={367} height={580} alt={artist} />
-      <FavoriteButton />
+      <StyledImage src={image} width={367} height={580} alt={artist} isLiked={isLiked}/>
+      <FavoriteButton onToggleLiked={onToggleLiked} isLiked={isLiked}/>
       </Div>
       <p>
         <strong>{artist}</strong>
