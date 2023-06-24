@@ -30,10 +30,11 @@ export default function App({ Component, pageProps }) {
     "art-pieces-info",
     { defaultValue: data }
   );
+  
   function handleToggleLiked(slug) {
     updateArtPiecesInfo((draft) => {
       const piece = draft.find((piece) => piece.slug === slug);
-      piece ? {...piece, isLiked: !isLiked} : piece;
+      piece.isLiked = !piece.isLiked;
     });
   }
 
