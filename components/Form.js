@@ -3,7 +3,7 @@ export default function Form({ onAddComment }) {
     event.preventDefault();
     /*  const formData = new FormData(event.terget);
       const data = Object.fromEntries(formData); */
-    const data = {comment: event.target.elements.comment.value};
+    const data = event.target.elements.comment.value;
 
     onAddComment(data);
     event.target.reset();

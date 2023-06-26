@@ -6,12 +6,13 @@ const Box = styled.ul`
   display: grid;
   place-items: center;
 `;
-export default function List({ comments, onDeleteComments }) {
+export default function List({ comments, /* onDeleteComments, */ slug }) {
+  const artComment = comments.find((comment)=> comment.slug === slug)
   return (
     <>
       <h1>Comments:</h1>
       <Box>
-        {comments.map((comment) => (
+        {artComment && artComment.comments?.map((comment) => (
           <li key={comment.id}>
             <p>{comment.date}</p>
             <p>{comment.comment}</p>

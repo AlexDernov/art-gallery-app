@@ -1,11 +1,10 @@
 import Image from "next/image";
 import styled from "styled-components";
-import useLocalStorageState from "use-local-storage-state";
-import { uid } from "uid";
 import Link from "next/link";
 import Form from "./Form";
 import List from "./List";
 import FavoriteButton from "./FavoriteButton";
+
 
 const Back = styled(Link)`
 margin: 0;
@@ -16,10 +15,20 @@ height: 60px;
 width: 100%;
 list-style-type: none;
 display: flex;
-align-content: flex-start;
-justify-content: flex-start;
+position: fixed;
+left: 20px
+top: 0px;
 font-size: 3em;`;
 
+const ImgBox = styled.div`
+  margin 20px;
+  display:grid;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  place-items: center;
+  
+`;
 
 const Main = styled.main`
 list-style-type: none;
@@ -33,6 +42,8 @@ const Info = styled.ul`
   display: grid;
   place-items: center;
 `;
+const StyledImage = styled(Image)`
+`;
 
 export default function ArtPieceDetails({
   image,
@@ -41,20 +52,29 @@ export default function ArtPieceDetails({
   year,
   genre,
   slug,
+  colors,
+  onToggleLiked,
+  isLiked,
+onAddComment,
+comments
 }) {
-  const [comments, setComments] = useLocalStorageState("comments", {
-    defaultValue: [],
-  });
+ 
 
-   function handleAddComment(newComment) {
-    setComments([...comments, { date: new Date().toLocaleDateString("en-us", { dateStyle: "medium" }), id: uid(), ...newComment }]);
-  }
+   
 
-  function handleDeleteComment(id) {
+  /* function handleDeleteComment(id) {
     setComments(
       comments.filter((comment) => (comment.id === id ? false : true))
     );
-  } 
+  }  */
+  const Div = styled.div`
+  display: flex;
+  flex-wrap: column nowrap;
+  position: relativ;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 10px 10px 20px 10px ${colors[1]}, -10px -10px 20px 10px ${colors[0]};`;
+
   console.log("Slug", slug);
   return (
     <Main>
@@ -76,11 +96,13 @@ export default function ArtPieceDetails({
         </svg>
         <div>All Art Pieces</div>
       </Back>
-      <section>
+      <ImgBox>
         <h1>{title}</h1>
-        <FavoriteButton/>
-        <Image src={image} width={407} height={620} alt="Bild" /* aria-labelledby={slug} */ />
-      </section>
+        <FavoriteButton onToggleLiked={onToggleLiked} slug={slug} isLiked={isLiked}/>
+        <Div>
+        <StyledImage src={image} width={407} height={620} alt="Bild" /* aria-labelledby={slug} */ />
+        </Div>
+      </ImgBox>
       <Info>
         <li>
           <strong>{artist}</strong>
@@ -91,8 +113,8 @@ export default function ArtPieceDetails({
         </li>
       </Info>
 
-      <List comments={comments} onDeleteComment={handleDeleteComment} />
-      <Form onAddComment={handleAddComment} />
+      <List comments={comments} slug={slug} /* onDeleteComment={handleDeleteComment} */ />
+      <Form onAddComment={(newComment)=>onAddComment(slug, newComment)} />
     </Main>
   );
 }

@@ -37,7 +37,7 @@ return (<nav>
     <NavLink href="/art-pieces">Art Pieces</NavLink>
   </li>
   <li >
-    <NavLink href="/Favorites">Favorites</NavLink>
+    <NavLink href="/favorites">Favorites</NavLink>
   </li>
 </NavList>
 </nav>);
