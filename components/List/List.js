@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Box = styled.ul`
+margin: 0;
   list-style-type: none;
   text-align: center;
   display: grid;

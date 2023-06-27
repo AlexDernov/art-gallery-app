@@ -15,7 +15,7 @@ list-style-type: none;
 display: flex;
 align-content: space-between;
 justify-content: space-around;
-font-size: 3em;
+font-size: 2.5em;
 position: fixed;
 bottom: 0;`;
 
@@ -24,20 +24,25 @@ const NavLink = styled(Link)`
 text-decoration: none;
 color: var(--primary-color);
 &: hover {
-  transform: scale(1.3);
-}`;
+  font-size: 1.2em;}
 
+&: target {
+  color: red;
+  font-size: 1.2em;
+}`;
+/* font-size: 1.2em;
+  text-shadow: 2px 2px 4px #000000; */
 export default function Navigation(){
 return (<nav>
 <NavList>
-  <li>
-    <NavLink href="/">Spotlight</NavLink>
-  </li>
-  <li>
-    <NavLink href="/art-pieces">Art Pieces</NavLink>
+  <li >
+    <NavLink id="Spotlight" href="/">Spotlight</NavLink>
   </li>
   <li >
-    <NavLink href="/favorites">Favorites</NavLink>
+    <NavLink id="Art" href="/art-pieces">Art Pieces</NavLink>
+  </li>
+  <li >
+    <NavLink id="Favorites" href="/favorites">Favorites</NavLink>
   </li>
 </NavList>
 </nav>);

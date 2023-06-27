@@ -1,8 +1,8 @@
-import ArtPieces from "../../components/ArtPieces";
+import ArtPieces from "../../components/ArtPieces/ArtPieces";
 import Head from "next/head.js";
-import styled from "styled-components";
+/* import styled from "styled-components"; */
 
-const Div = styled.div`
+/* const Div = styled.div`
   display: flex;
   flex-wrap: column nowrap;
   position: relativ;
@@ -16,7 +16,7 @@ const ImgBox = styled.div`
   text-align: center;
   place-items: center;
   
-`;
+`; */
 
 export default function ArtPiecesPage({
   pieces,
@@ -30,16 +30,16 @@ export default function ArtPiecesPage({
       <Head>
         <title>Art Gallery - Spotlight</title>
       </Head>
-      <ImgBox>
-        <Div>
+      {/* <ImgBox>
+        <Div> */}
           <ArtPieces
             pieces={pieces}
             artPiecesInfo={artPiecesInfo}
             onToggleLiked={onToggleLiked}
 
           />
-        </Div>
-      </ImgBox>
+      {/*   </Div>
+      </ImgBox> */}
     </>
   );
 }

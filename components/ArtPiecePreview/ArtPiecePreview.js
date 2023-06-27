@@ -1,14 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import FavoriteButton from "./FavoriteButton";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import styled from "styled-components";
 
-const StyledFView = styled.figure`
-  margin: 0;
+const ImgBox = styled.div`
+  margin 20px;
   display:grid;
+  align-content: center;
+  justify-content: center;
   text-align: center;
   place-items: center;
+  
 `;
+/* const StyledFView = styled.figure`
+  margin: 0;
+  `; */
+ /*  display:grid;
+  text-align: center;
+  place-items: center;
+`; */
 
 const ArtLink = styled(Link)`
   text-decoration: none;
@@ -45,18 +55,18 @@ const ImgBox = styled.div`
 export default function ArtPiecePreview({ name, image, artist, slug, onToggleLiked, isLiked, colors }) {
   console.log(name);
   return (
-    <StyledFView>
+    <ImgBox>
       <FavoriteButton onToggleLiked={onToggleLiked} slug={slug} isLiked={isLiked}/>
       <ArtLink href={`/art-pieces/${slug}`}>
         {" "}
         
-        <Image src={image} width={407} height={620} aria-labelledby={slug} />
+        <Image src={image} width={407} height={620} aria-label={slug} alt={slug}/>
         <p>
           <i>"{name}"</i> by <strong>{artist}</strong>
         </p>
         <hr className="divider" role="none" />
       </ArtLink>
       
-    </StyledFView>
+    </ImgBox>
   );
 }

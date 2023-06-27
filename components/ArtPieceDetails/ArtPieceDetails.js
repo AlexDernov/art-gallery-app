@@ -1,27 +1,41 @@
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
-import Form from "./Form";
-import List from "./List";
-import FavoriteButton from "./FavoriteButton";
+import Form from "../Form/Form";
+import List from "../List/List";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 
 const Back = styled(Link)`
+text-decoration: none;
 margin: 0;
 font-family: var(--font-imperial); 
 padding: 0;
 color: var(--primary-color);
 height: 60px;
 width: 100%;
+font-size: 2em;
 list-style-type: none;
 display: flex;
+position:fixed;
+top: 20px;
+left: 25px;
+&: hover {
+  font-size: 2.2em;;
+}
+`;
+
+
+/* align-content: center;
+justify-content: center; */
+/* display: flex;
 position: fixed;
 left: 20px
-top: 0px;
-font-size: 3em;`;
+top: 0px; */
 
-const ImgBox = styled.div`
-  margin 20px;
+  
+  const ImgBox = styled.div`
+  margin 10px;
   display:grid;
   align-content: center;
   justify-content: center;
@@ -31,18 +45,27 @@ const ImgBox = styled.div`
 `;
 
 const Main = styled.main`
+margin: 0;
 list-style-type: none;
 text-align: center;
 display: grid;
 place-items: center;`;
 
+
 const Info = styled.ul`
+margin: 0;
   list-style-type: none;
   text-align: center;
   display: grid;
   place-items: center;
 `;
 const StyledImage = styled(Image)`
+padding: o;
+margin: 0;
+display: flex;
+position:relativ;
+align-content: center;
+justify-content:center;
 `;
 
 export default function ArtPieceDetails({
@@ -59,15 +82,12 @@ onAddComment,
 comments
 }) {
  
+const H1 = styled.h1`
+margin: 0;`;
 
-   
-
-  /* function handleDeleteComment(id) {
-    setComments(
-      comments.filter((comment) => (comment.id === id ? false : true))
-    );
-  }  */
   const Div = styled.div`
+  margin: 7px 0 20px 0;
+  padding: 10px;
   display: flex;
   flex-wrap: column nowrap;
   position: relativ;
@@ -97,10 +117,10 @@ comments
         <div>All Art Pieces</div>
       </Back>
       <ImgBox>
-        <h1>{title}</h1>
+        <H1>{title}</H1>
         <FavoriteButton onToggleLiked={onToggleLiked} slug={slug} isLiked={isLiked}/>
         <Div>
-        <StyledImage src={image} width={407} height={620} alt="Bild" /* aria-labelledby={slug} */ />
+        <StyledImage src={image} width={370} height={583} alt="Bild" /* aria-labelledby={slug} */ />
         </Div>
       </ImgBox>
       <Info>
@@ -112,7 +132,6 @@ comments
           <i>{genre}</i>
         </li>
       </Info>
-
       <List comments={comments} slug={slug} /* onDeleteComment={handleDeleteComment} */ />
       <Form onAddComment={(newComment)=>onAddComment(slug, newComment)} />
     </Main>

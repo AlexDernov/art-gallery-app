@@ -1,10 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
-import FavoriteButton from "./FavoriteButton";
-
-
-
-
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import Link from "next/link";
 
 const ImgBox = styled.div`
   margin 20px;
@@ -25,6 +22,7 @@ export default function Spotlight({
   colors
 }) {
 const Div = styled.div`
+padding: 10px;
   display: flex;
   flex-wrap: column nowrap;
   position: relativ;
@@ -35,6 +33,14 @@ const Div = styled.div`
 const StyledImage = styled(Image)`
   
 `;
+const ArtLink = styled(Link)`
+  text-decoration: none;
+  color: var(--primary-color);
+  &: hover {
+    transform: scale(1.01);
+  }
+  
+`;
 /* position: static; */
   return (
     <ImgBox>
@@ -43,12 +49,15 @@ const StyledImage = styled(Image)`
         slug={slug}
         isLiked={isLiked}
       />
+      <ArtLink href={`/art-pieces/${slug}`}>
+        {" "}
       <Div>
         <StyledImage src={image} width={367} height={580} alt={artist} />
       </Div>
       <p>
         <strong>{artist}</strong>
       </p>
+      </ArtLink>
     </ImgBox>
   );
 }

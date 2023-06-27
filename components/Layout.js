@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Navigation from "./Navigation";
+import Navigation from "./Navigation/Navigation";
 /* import Image from "next/image"; */
 
 const StyledLayout = styled.div`

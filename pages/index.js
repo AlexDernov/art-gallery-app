@@ -1,4 +1,4 @@
-import Spotlight from "../components/Spotlight";
+import Spotlight from "../components/Spotlight/Spotlight";
 import Head from "next/head.js";
 
 export default function SpotlightPage({ pieces, artPiecesInfo, onToggleLiked }) {
